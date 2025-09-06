@@ -1,0 +1,50 @@
+{
+  "name": "frontend-landpage",
+  "version": "1.0.0",
+  "description": "Main landing page that is used for web searching and company presentation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --mode development",
+    "build": "NODE_ENV=production webpack --mode production",
+    "build:dev": "webpack --mode development",
+    "serve": "npx serve build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AurisAASI/frontend-landpage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AurisAASI/frontend-landpage/issues"
+  },
+  "homepage": "https://github.com/AurisAASI/frontend-landpage#readme",
+  "devDependencies": {
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "autoprefixer": "^10.4.21",
+    "babel-loader": "^10.0.0",
+    "clean-webpack-plugin": "^4.0.0",
+    "compression-webpack-plugin": "^11.1.0",
+    "copy-webpack-plugin": "^13.0.1",
+    "core-js": "^3.45.1",
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.4",
+    "mini-css-extract-plugin": "^2.9.4",
+    "postcss-loader": "^8.2.0",
+    "regenerator-runtime": "^0.14.1",
+    "sass": "^1.92.1",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "terser-webpack-plugin": "^5.3.14",
+    "webpack": "^5.101.3",
+    "webpack-cli": "^6.0.1",
+    "webpack-dev-server": "^5.2.2"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8"
+  }
+}
