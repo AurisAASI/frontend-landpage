@@ -8,7 +8,8 @@
     "start": "webpack serve --mode development",
     "build": "NODE_ENV=production webpack --mode production",
     "build:dev": "webpack --mode development",
-    "serve": "npx serve build"
+    "serve": "npx serve build",
+    "serve:dev": "npx live-server src/"
   },
   "repository": {
     "type": "git",
