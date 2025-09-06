@@ -82,8 +82,10 @@ module.exports = {
       minify: isProduction ? {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
-        removeComments: true
-      } : false
+        removeComments: false // Keep comments to preserve template attribution
+      } : false,
+      scriptLoading: 'defer',
+      inject: 'body'
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash].css'
@@ -91,16 +93,19 @@ module.exports = {
     // Only copy static assets that are not processed by webpack
     new CopyWebpackPlugin({
       patterns: [
+        // Copy all asset directories
         {
-          from: 'src/assets/images',
-          to: 'images',
+          from: 'src/assets',
+          to: 'assets',
           noErrorOnMissing: true
         },
+        // Copy favicon if exists
         {
           from: 'src/assets/favicon.ico',
           to: '',
           noErrorOnMissing: true
         },
+        // Copy robots.txt
         {
           from: 'src/robots.txt',
           to: '',
