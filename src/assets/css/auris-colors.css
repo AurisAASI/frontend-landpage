@@ -1,0 +1,120 @@
+:root {
+  /* Paleta Principal */
+  --verde-menta-claro: #B9E2D8;
+  --verde-menta-escuro: #65C4B4;
+  --azul-eletrico: #4A88FF;
+  --laranja-pastel: #FFB27E;
+  --cinza-claro: #E9E9E9;
+  --preto-sutil: #333333;
+
+  /* Paleta Secundária */
+  --azul-cobalto: #2C5E91;
+  --roxo-claro: #A3A0DE;
+  --amarelo-suave: #FFD28C;
+  --branco-puro: #FFFFFF;
+
+  /* Override das variáveis do Bootstrap */
+  --bs-primary: var(--azul-cobalto);
+  --bs-secondary: var(--verde-menta-escuro);
+  --bs-success: var(--verde-menta-claro);
+  --bs-info: var(--azul-eletrico);
+  --bs-warning: var(--amarelo-suave);
+  --bs-danger: var(--laranja-pastel);
+  --bs-light: var(--cinza-claro);
+  --bs-dark: var(--preto-sutil);
+  
+  /* Cores para textos e backgrounds */
+  --body-bg: var(--branco-puro);
+  --body-color: var(--preto-sutil);
+  --heading-color: var(--azul-cobalto);
+  --link-color: var(--azul-eletrico);
+  --link-hover-color: var(--azul-cobalto);
+  --cta-bg: var(--azul-eletrico);
+  --cta-hover-bg: var(--azul-cobalto);
+  --accent-color: var(--laranja-pastel);
+  --secondary-accent: var(--roxo-claro);
+}
+
+/* Aplicação das cores aos elementos do template */
+body {
+  background-color: var(--body-bg);
+  color: var(--body-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+.btn-primary {
+  background-color: var(--cta-bg);
+  border-color: var(--cta-bg);
+}
+
+.btn-primary:hover {
+  background-color: var(--cta-hover-bg);
+  border-color: var(--cta-hover-bg);
+}
+
+.btn-secondary {
+  background-color: var(--verde-menta-escuro);
+  border-color: var(--verde-menta-escuro);
+}
+
+/* Estilo para o header */
+.fbs__net-navbar {
+  background-color: var(--branco-puro);
+}
+
+.fbs__net-navbar.dark {
+  background-color: var(--preto-sutil);
+}
+
+/* Estilos para os cartões */
+.card {
+  border-color: var(--cinza-claro);
+}
+
+.card-header {
+  background-color: var(--verde-menta-claro);
+}
+
+/* Estilos específicos para Otto */
+.otto-section {
+  background-color: var(--verde-menta-claro);
+  padding: 3rem 0;
+}
+
+.otto-icon {
+  background-color: var(--verde-menta-escuro);
+  color: var(--branco-puro);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+}
+
+/* Classes de utilidade para cores */
+.bg-verde-menta-claro { background-color: var(--verde-menta-claro); }
+.bg-verde-menta-escuro { background-color: var(--verde-menta-escuro); }
+.bg-azul-eletrico { background-color: var(--azul-eletrico); }
+.bg-laranja-pastel { background-color: var(--laranja-pastel); }
+.bg-roxo-claro { background-color: var(--roxo-claro); }
+.bg-azul-cobalto { background-color: var(--azul-cobalto); }
+
+.text-verde-menta-claro { color: var(--verde-menta-claro); }
+.text-verde-menta-escuro { color: var(--verde-menta-escuro); }
+.text-azul-eletrico { color: var(--azul-eletrico); }
+.text-laranja-pastel { color: var(--laranja-pastel); }
+.text-roxo-claro { color: var(--roxo-claro); }
+.text-azul-cobalto { color: var(--azul-cobalto); }

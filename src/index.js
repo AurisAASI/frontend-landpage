@@ -1,7 +1,8 @@
-// This is just a placeholder file for webpack
-// The actual scripts are loaded directly in the HTML file
+// Import styles if needed
+// import './styles/main.css';
 
-// Initialize the application when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Template initialized');
-});
+// Main JavaScript entry point
+console.log('Application initialized');
+
+// Import other components/modules as needed
+// import './components/navbar';
