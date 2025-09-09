@@ -82,7 +82,13 @@ module.exports = {
       minify: isProduction ? {
         removeAttributeQuotes: true,
         collapseWhitespace: true,
-        removeComments: false // Keep comments to preserve template attribution
+        removeComments: false, // Keep comments to preserve template attribution
+        // Preserve data attributes and IDs
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        removeEmptyAttributes: false, // Important for cookie elements
+        removeRedundantAttributes: false
       } : false,
       scriptLoading: 'defer',
       inject: 'body'
@@ -111,9 +117,11 @@ module.exports = {
           to: '',
           noErrorOnMissing: true
         },
+        // Ensure pages directory is copied with correct structure
         {
           from: 'src/pages',
-          to: 'pages'
+          to: 'pages',
+          noErrorOnMissing: true
         }
       ]
     })
@@ -148,6 +156,43 @@ module.exports = {
     },
   }
 };
+
+// Add a hook to validate the HTML for cookie banner
+class CookieConsentValidationPlugin {
+  apply(compiler) {
+    compiler.hooks.compilation.tap('CookieConsentValidationPlugin', compilation => {
+      // Use the proper hook to access the HTML
+      compilation.hooks.processAssets.tap(
+        {
+          name: 'CookieConsentValidationPlugin',
+          stage: compilation.PROCESS_ASSETS_STAGE_OPTIMIZE
+        },
+        assets => {
+          // Check if the index.html asset exists
+          if (assets['index.html']) {
+            const source = assets['index.html'].source();
+            
+            // Check if cookie elements exist
+            if (!source.includes('cookieConsent')) {
+              console.warn('\x1b[33m%s\x1b[0m', 'Warning: Cookie consent banner not found in HTML!');
+            }
+            
+            if (!source.includes('cookieModal')) {
+              console.warn('\x1b[33m%s\x1b[0m', 'Warning: Cookie settings modal not found in HTML!');
+            }
+            
+            console.log('\x1b[32m%s\x1b[0m', 'Cookie consent validation completed.');
+          }
+        }
+      );
+    });
+  }
+}
+
+// Add the validation plugin in development mode
+if (!isProduction) {
+  module.exports.plugins.push(new CookieConsentValidationPlugin());
+}
 
 // Add production-only plugins
 if (isProduction) {
