@@ -45,6 +45,62 @@ License: https://freebootstrap.net/license
     <!-- ======= Site Wrap =======-->
     <div class="site-wrap">
       
+      <!-- Cookie Consent Banner -->
+      <div id="cookieConsent" class="cookie-banner">
+        <div class="cookie-content">
+          <div class="cookie-text">
+            <h3>Utilizamos cookies para melhorar sua experiência</h3>
+            <p>Utilizamos cookies e tecnologias semelhantes para melhorar sua navegação, personalizar conteúdo e anúncios, e analisar nosso tráfego. Ao clicar em "Aceitar todos", você concorda com nosso uso de cookies. <a href="pages/cookies.html" class="text-azul-eletrico">Saiba mais</a></p>
+          </div>
+          <div class="cookie-actions">
+            <button id="cookieAcceptAll" class="btn bg-verde-menta-escuro text-white">Aceitar todos</button>
+            <button id="cookieSettings" class="btn btn-outline-secondary">Personalizar</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Cookie Settings Modal -->
+      <div id="cookieModal" class="cookie-modal">
+        <div class="cookie-modal-content">
+          <div class="cookie-modal-header">
+            <h3>Configurações de Cookies</h3>
+            <button id="closeModal" class="cookie-close">&times;</button>
+          </div>
+          <div class="cookie-modal-body">
+            <div class="cookie-option">
+              <div>
+                <h4>Cookies essenciais</h4>
+                <p>Necessários para o funcionamento básico do site.</p>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+              </div>
+            </div>
+            <div class="cookie-option">
+              <div>
+                <h4>Cookies analíticos</h4>
+                <p>Nos ajudam a entender como os visitantes interagem com o site.</p>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="analyticsCookies" checked>
+              </div>
+            </div>
+            <div class="cookie-option">
+              <div>
+                <h4>Cookies de marketing</h4>
+                <p>Utilizados para exibir anúncios relevantes e personalizar sua experiência.</p>
+              </div>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="marketingCookies" checked>
+              </div>
+            </div>
+          </div>
+          <div class="cookie-modal-footer">
+            <button id="saveCookieSettings" class="btn bg-verde-menta-escuro text-white">Salvar preferências</button>
+          </div>
+        </div>
+      </div>
+
       <!-- ======= Header =======-->
       <header class="fbs__net-navbar navbar navbar-expand-lg dark" aria-label="Auris navbar">
         <div class="container d-flex align-items-center justify-content-between">
@@ -871,61 +927,7 @@ License: https://freebootstrap.net/license
       </main>
     </div>
     
-    <!-- Cookie Consent Banner -->
-    <div id="cookieConsent" class="cookie-banner">
-      <div class="cookie-content">
-        <div class="cookie-text">
-          <h3>Utilizamos cookies para melhorar sua experiência</h3>
-          <p>Utilizamos cookies e tecnologias semelhantes para melhorar sua navegação, personalizar conteúdo e anúncios, e analisar nosso tráfego. Ao clicar em "Aceitar todos", você concorda com nosso uso de cookies. <a href="pages/cookies.html" class="text-azul-eletrico">Saiba mais</a></p>
-        </div>
-        <div class="cookie-actions">
-          <button id="cookieAcceptAll" class="btn bg-verde-menta-escuro text-white">Aceitar todos</button>
-          <button id="cookieSettings" class="btn btn-outline-secondary">Personalizar</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cookie Settings Modal -->
-    <div id="cookieModal" class="cookie-modal">
-      <div class="cookie-modal-content">
-        <div class="cookie-modal-header">
-          <h3>Configurações de Cookies</h3>
-          <button id="closeModal" class="cookie-close">&times;</button>
-        </div>
-        <div class="cookie-modal-body">
-          <div class="cookie-option">
-            <div>
-              <h4>Cookies essenciais</h4>
-              <p>Necessários para o funcionamento básico do site.</p>
-            </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
-            </div>
-          </div>
-          <div class="cookie-option">
-            <div>
-              <h4>Cookies analíticos</h4>
-              <p>Nos ajudam a entender como os visitantes interagem com o site.</p>
-            </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="analyticsCookies" checked>
-            </div>
-          </div>
-          <div class="cookie-option">
-            <div>
-              <h4>Cookies de marketing</h4>
-              <p>Utilizados para exibir anúncios relevantes e personalizar sua experiência.</p>
-            </div>
-            <div class="form-check form-switch">
-              <input class="form-check-input" type="checkbox" id="marketingCookies" checked>
-            </div>
-          </div>
-        </div>
-        <div class="cookie-modal-footer">
-          <button id="saveCookieSettings" class="btn bg-verde-menta-escuro text-white">Salvar preferências</button>
-        </div>
-      </div>
-    </div>
+    <!-- Cookie elements foram movidos para dentro da div site-wrap no início do body -->
 
     <!-- ======= Back to Top =======-->
     <button id="back-to-top"><i class="bi bi-arrow-up-short"></i></button>
