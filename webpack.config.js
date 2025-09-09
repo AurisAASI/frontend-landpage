@@ -110,6 +110,10 @@ module.exports = {
           from: 'src/robots.txt',
           to: '',
           noErrorOnMissing: true
+        },
+        {
+          from: 'src/pages',
+          to: 'pages'
         }
       ]
     })

@@ -45,7 +45,6 @@ License: https://freebootstrap.net/license
     <!-- ======= Site Wrap =======-->
     <div class="site-wrap">
       
-      
       <!-- ======= Header =======-->
       <header class="fbs__net-navbar navbar navbar-expand-lg dark" aria-label="Auris navbar">
         <div class="container d-flex align-items-center justify-content-between">
@@ -872,6 +871,62 @@ License: https://freebootstrap.net/license
       </main>
     </div>
     
+    <!-- Cookie Consent Banner -->
+    <div id="cookieConsent" class="cookie-banner">
+      <div class="cookie-content">
+        <div class="cookie-text">
+          <h3>Utilizamos cookies para melhorar sua experiência</h3>
+          <p>Utilizamos cookies e tecnologias semelhantes para melhorar sua navegação, personalizar conteúdo e anúncios, e analisar nosso tráfego. Ao clicar em "Aceitar todos", você concorda com nosso uso de cookies. <a href="pages/cookies.html" class="text-azul-eletrico">Saiba mais</a></p>
+        </div>
+        <div class="cookie-actions">
+          <button id="cookieAcceptAll" class="btn bg-verde-menta-escuro text-white">Aceitar todos</button>
+          <button id="cookieSettings" class="btn btn-outline-secondary">Personalizar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cookie Settings Modal -->
+    <div id="cookieModal" class="cookie-modal">
+      <div class="cookie-modal-content">
+        <div class="cookie-modal-header">
+          <h3>Configurações de Cookies</h3>
+          <button id="closeModal" class="cookie-close">&times;</button>
+        </div>
+        <div class="cookie-modal-body">
+          <div class="cookie-option">
+            <div>
+              <h4>Cookies essenciais</h4>
+              <p>Necessários para o funcionamento básico do site.</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="essentialCookies" checked disabled>
+            </div>
+          </div>
+          <div class="cookie-option">
+            <div>
+              <h4>Cookies analíticos</h4>
+              <p>Nos ajudam a entender como os visitantes interagem com o site.</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="analyticsCookies" checked>
+            </div>
+          </div>
+          <div class="cookie-option">
+            <div>
+              <h4>Cookies de marketing</h4>
+              <p>Utilizados para exibir anúncios relevantes e personalizar sua experiência.</p>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="marketingCookies" checked>
+            </div>
+          </div>
+        </div>
+        <div class="cookie-modal-footer">
+          <button id="saveCookieSettings" class="btn bg-verde-menta-escuro text-white">Salvar preferências</button>
+        </div>
+      </div>
+    </div>
+
     <!-- ======= Back to Top =======-->
     <button id="back-to-top"><i class="bi bi-arrow-up-short"></i></button>
     <!-- End Back to top-->
@@ -928,6 +983,116 @@ License: https://freebootstrap.net/license
               console.log(`Route changed to: ${route}`);
           }
       });
+    </script>
+
+    <!-- Cookie Consent Script -->
+    <script>
+    // Cookie Consent Management
+    document.addEventListener('DOMContentLoaded', function() {
+      // Elements
+      const cookieBanner = document.getElementById('cookieConsent');
+      const acceptAllBtn = document.getElementById('cookieAcceptAll');
+      const settingsBtn = document.getElementById('cookieSettings');
+      const cookieModal = document.getElementById('cookieModal');
+      const closeModalBtn = document.getElementById('closeModal');
+      const saveSettingsBtn = document.getElementById('saveCookieSettings');
+      
+      // Check if user already made cookie choices
+      const cookieChoices = localStorage.getItem('aurisCookieConsent');
+      
+      // If no choices have been made, show the banner
+      if (!cookieChoices) {
+        cookieBanner.style.display = 'block';
+      }
+      
+      // Accept all cookies
+      acceptAllBtn.addEventListener('click', function() {
+        setCookieChoices({
+          essential: true,
+          analytics: true,
+          marketing: true
+        });
+        cookieBanner.style.display = 'none';
+      });
+      
+      // Open cookie settings modal
+      settingsBtn.addEventListener('click', function() {
+        cookieModal.style.display = 'block';
+      });
+      
+      // Close cookie settings modal
+      closeModalBtn.addEventListener('click', function() {
+        cookieModal.style.display = 'none';
+      });
+      
+      // Close modal when clicking outside of it
+      window.addEventListener('click', function(event) {
+        if (event.target === cookieModal) {
+          cookieModal.style.display = 'none';
+        }
+      });
+      
+      // Save cookie settings
+      saveSettingsBtn.addEventListener('click', function() {
+        const analyticsCookies = document.getElementById('analyticsCookies').checked;
+        const marketingCookies = document.getElementById('marketingCookies').checked;
+        
+        setCookieChoices({
+          essential: true, // Always enabled
+          analytics: analyticsCookies,
+          marketing: marketingCookies
+        });
+        
+        cookieModal.style.display = 'none';
+        cookieBanner.style.display = 'none';
+      });
+      
+      // Set cookie choices in localStorage
+      function setCookieChoices(choices) {
+        localStorage.setItem('aurisCookieConsent', JSON.stringify(choices));
+        
+        // Here you would typically initialize your analytics and marketing scripts
+        // based on the user's choices
+        applyUserChoices(choices);
+      }
+      
+      // Apply user choices by enabling/disabling cookies
+      function applyUserChoices(choices) {
+        // Example implementation - you would replace this with actual code
+        // to manage your analytics and marketing cookies
+        console.log('Applied cookie choices:', choices);
+        
+        // If analytics is enabled
+        if (choices.analytics) {
+          // Initialize analytics (e.g., Google Analytics)
+          // Example: initializeAnalytics();
+        }
+        
+        // If marketing is enabled
+        if (choices.marketing) {
+          // Initialize marketing cookies (e.g., Facebook Pixel)
+          // Example: initializeMarketingCookies();
+        }
+      }
+      
+      // If user already made choices, apply them
+      if (cookieChoices) {
+        try {
+          const choices = JSON.parse(cookieChoices);
+          applyUserChoices(choices);
+          
+          // Pre-fill form if user opens settings again
+          if (choices.analytics) {
+            document.getElementById('analyticsCookies').checked = true;
+          }
+          if (choices.marketing) {
+            document.getElementById('marketingCookies').checked = true;
+          }
+        } catch (e) {
+          console.error('Error parsing cookie choices:', e);
+        }
+      }
+    });
     </script>
     <!-- End JavaScripts-->
   </body>
