@@ -41,6 +41,12 @@ jobs:
           aws s3 sync build s3://$S3_BUCKET --exclude "index.html" \
             --cache-control "public, max-age=2592000, immutable"
 
+      - name: Upload pages (shorter cache)
+        run: |
+          aws s3 cp build/pages/ s3://$S3_BUCKET/pages/ --recursive \
+            --content-type "text/html" \
+            --cache-control "max-age=86400"
+
       - name: Invalidate CloudFront
         run: |
           aws cloudfront create-invalidation --distribution-id $CF_DIST_ID --paths "/index.html"
